@@ -48,6 +48,8 @@ export CFLAGS="$RPM_OPT_FLAGS -W -Wall"
 #%__mv "%{buildroot}%{_datadir}/doc"/* _docs/
 #%__rm -rf "%{buildroot}%{_datadir}/doc"
 rm -rf %{buildroot}/usr/share
+mkdir -p %{buildroot}/usr/share/license
+cp COPYING %{buildroot}/usr/share/license/%{name}
 
 %post
 ln -s /usr/bin/xml /usr/bin/xmlstarlet
@@ -62,5 +64,6 @@ ln -s /usr/bin/xml /usr/bin/xmlstarlet
 %{_bindir}/xml
 #%{_bindir}/xmlstarlet
 #%doc %{_mandir}/man1/xmlstarlet.1%{ext_man}
+/usr/share/license/%{name}
 
 %changelog
